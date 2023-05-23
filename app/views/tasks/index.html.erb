@@ -1,7 +1,16 @@
 <h1>My tasks</h1>
-<ul>
+<ul class = "list-unstyled">
   <% @tasks.each do |task| %>
-    <li> <%= link_to task.title, task_path(task) %></li>
+    <li>
+        <input type="checkbox" >
+        <span class="checkmark"></span>
+      <label class="container"><%= link_to task.title, task_path(task) %>
+       <%= link_to "🗑️",
+       task_path(task),
+       data: { turbo_method: :delete, turbo_confirm: 'You sure?' } %>
+      </label>
+
+    </li>
     <% end %>
 </ul>
 
